@@ -2,6 +2,8 @@
 
 后台入口为 `/admin/`，使用 Sveltia CMS。作者不需要使用 Git 命令，但需要拥有 GitHub 账号并被授予仓库写入权限。
 
+当前临时测试地址为 `http://39.102.210.194`，OAuth 回调为 `http://39.102.210.194/oauth/callback`。HTTP 仅用于管理员联调；正式邀请作者前必须更换域名并启用 HTTPS。
+
 ## 1. 创建 GitHub OAuth App
 
 在 GitHub 的 Developer settings 中创建 OAuth App：
@@ -10,6 +12,8 @@
 - Authorization callback URL：OAuth 网关提供的回调地址
 
 GitHub 不允许把 OAuth Client Secret 放在静态站点中，所以必须部署一个 OAuth 网关。可在阿里云上运行兼容 Decap CMS GitHub backend 的 OAuth 服务，或使用受信任的托管网关。
+
+本项目已经包含一个无需第三方 npm 依赖的 Node.js 网关，代码位于 `oauth/server.js`，systemd 服务模板位于 `systemd/neverdown-oauth.service`。
 
 获得网关地址后，修改 `source/admin/config.yml`：
 
@@ -58,4 +62,3 @@ authors:
 - OAuth Client Secret 只放在网关环境变量中。
 - 定期检查仓库协作者名单。
 - 开启 GitHub 仓库和阿里云服务器的登录告警。
-

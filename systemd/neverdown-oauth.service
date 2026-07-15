@@ -1,0 +1,22 @@
+[Unit]
+Description=NeverDown CMS GitHub OAuth gateway
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=www-data
+Group=www-data
+WorkingDirectory=/opt/neverdown-oauth
+EnvironmentFile=/etc/neverdown/oauth.env
+ExecStart=/usr/bin/node /opt/neverdown-oauth/server.js
+Restart=on-failure
+RestartSec=3
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+
+[Install]
+WantedBy=multi-user.target
+

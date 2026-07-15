@@ -8,7 +8,7 @@ language:
   - en
 timezone: Asia/Shanghai
 
-url: https://example.com
+url: http://39.102.210.194
 root: /
 permalink: :lang/posts/:title/
 permalink_defaults:
@@ -74,4 +74,3 @@ search:
   format: html
 
 theme: neverdown
-

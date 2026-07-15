@@ -1,16 +1,16 @@
-# 上线前替换仓库名及 OAuth 网关地址，详见 docs/CMS.md。
+# 当前使用公网 IP 进行上线前测试；取得域名后应整体切换为 HTTPS。
 backend:
   name: github
-  repo: REPLACE_WITH_OWNER/REPLACE_WITH_REPO
+  repo: dingyi00110/blog
   branch: main
-  base_url: https://auth.example.com
-  auth_endpoint: auth
+  base_url: http://39.102.210.194
+  auth_endpoint: oauth/auth
 
 publish_mode: simple
 media_folder: source/images/uploads
 public_folder: /images/uploads
-site_url: https://example.com
-display_url: https://example.com
+site_url: http://39.102.210.194
+display_url: http://39.102.210.194
 logo_url: /images/favicon.svg
 locale: zh_Hans
 
@@ -61,4 +61,3 @@ collections:
       - { label: 封面图, name: cover, widget: image, required: false }
       - { label: 开启评论, name: comments, widget: boolean, default: true }
       - { label: 正文, name: body, widget: markdown }
-

@@ -9,7 +9,7 @@ menu:
   about: /about/
 
 social:
-  github: https://github.com/REPLACE_WITH_OWNER/REPLACE_WITH_REPO
+  github: https://github.com/dingyi00110/blog
 
 authors:
   admin:
@@ -20,7 +20,7 @@ authors:
 
 comments:
   enable: false
-  repo: REPLACE_WITH_OWNER/REPLACE_WITH_REPO
+  repo: dingyi00110/blog
   repo_id: ''
   category: Announcements
   category_id: ''
@@ -34,4 +34,3 @@ analytics:
 
 footer:
   since: 2026
-
