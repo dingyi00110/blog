@@ -2,7 +2,7 @@
 
 后台入口为 `/admin/`，使用 Sveltia CMS。作者不需要使用 Git 命令，但需要拥有 GitHub 账号并被授予仓库写入权限。
 
-当前临时测试地址为 `http://39.102.210.194`，OAuth 回调为 `http://39.102.210.194/oauth/callback`。HTTP 仅用于管理员联调；正式邀请作者前必须更换域名并启用 HTTPS。
+当前临时测试地址为 `https://39-102-210-194.sslip.io`，OAuth 回调为 `https://39-102-210-194.sslip.io/oauth/callback`。该 sslip.io 主机名自动解析到阿里云公网 IP，用于满足 CMS 的 HTTPS 要求；正式上线后仍应换成自有域名。
 
 ## 1. 创建 GitHub OAuth App
 

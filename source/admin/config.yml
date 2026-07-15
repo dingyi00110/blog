@@ -1,16 +1,16 @@
-# 当前使用公网 IP 进行上线前测试；取得域名后应整体切换为 HTTPS。
+# 当前使用指向阿里云 IP 的临时 sslip.io 域名，以满足 CMS 的 HTTPS 要求。
 backend:
   name: github
   repo: dingyi00110/blog
   branch: main
-  base_url: http://39.102.210.194
+  base_url: https://39-102-210-194.sslip.io
   auth_endpoint: oauth/auth
 
 publish_mode: simple
 media_folder: source/images/uploads
 public_folder: /images/uploads
-site_url: http://39.102.210.194
-display_url: http://39.102.210.194
+site_url: https://39-102-210-194.sslip.io
+display_url: https://39-102-210-194.sslip.io
 logo_url: /images/favicon.svg
 locale: zh_Hans
 

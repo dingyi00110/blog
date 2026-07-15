@@ -8,7 +8,7 @@ language:
   - en
 timezone: Asia/Shanghai
 
-url: http://39.102.210.194
+url: https://39-102-210-194.sslip.io
 root: /
 permalink: :lang/posts/:title/
 permalink_defaults:
