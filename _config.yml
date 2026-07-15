@@ -1,0 +1,77 @@
+title: 永不宕机
+subtitle: Code, life, and everything in between.
+description: 一个由朋友们共同书写的中英文技术与生活博客
+keywords: 技术,生活,开发者,博客,Hexo
+author: NeverDown Authors
+language:
+  - zh-CN
+  - en
+timezone: Asia/Shanghai
+
+url: https://example.com
+root: /
+permalink: :lang/posts/:title/
+permalink_defaults:
+  lang: zh
+pretty_urls:
+  trailing_index: false
+  trailing_html: false
+
+source_dir: source
+public_dir: public
+tag_dir: tags
+archive_dir: archives
+category_dir: categories
+code_dir: downloads/code
+i18n_dir: :lang
+skip_render:
+  - admin/**
+
+new_post_name: :title.md
+default_layout: post
+titlecase: false
+external_link:
+  enable: true
+  field: site
+  exclude: ''
+filename_case: 1
+render_drafts: false
+post_asset_folder: true
+relative_link: false
+future: true
+syntax_highlighter: highlight.js
+highlight:
+  line_number: true
+  auto_detect: true
+  tab_replace: '  '
+  wrap: true
+  hljs: true
+
+index_generator:
+  path: ''
+  per_page: 10
+  order_by: -date
+archive_generator:
+  per_page: 20
+  yearly: true
+  monthly: false
+category_generator:
+  per_page: 20
+tag_generator:
+  per_page: 20
+
+feed:
+  type: atom
+  path: atom.xml
+  limit: 30
+  content: true
+sitemap:
+  path: sitemap.xml
+search:
+  path: search.xml
+  field: post
+  content: true
+  format: html
+
+theme: neverdown
+

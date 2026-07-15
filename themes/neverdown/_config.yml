@@ -1,0 +1,37 @@
+logo: /images/logo.svg
+favicon: /images/favicon.svg
+accent: '#39ff88'
+
+menu:
+  home: /
+  archives: /archives/
+  authors: /authors/
+  about: /about/
+
+social:
+  github: https://github.com/REPLACE_WITH_OWNER/REPLACE_WITH_REPO
+
+authors:
+  admin:
+    name: NeverDown
+    bio_zh: 站点管理员与联合作者
+    bio_en: Administrator and co-author
+    avatar: /images/avatar-default.svg
+
+comments:
+  enable: false
+  repo: REPLACE_WITH_OWNER/REPLACE_WITH_REPO
+  repo_id: ''
+  category: Announcements
+  category_id: ''
+  mapping: pathname
+  theme_light: light
+  theme_dark: dark
+
+analytics:
+  umami_url: ''
+  website_id: ''
+
+footer:
+  since: 2026
+

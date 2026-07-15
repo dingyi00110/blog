@@ -1,0 +1,17 @@
+<% const lang = ui_lang(); %>
+<header class="site-header">
+  <div class="shell header-inner">
+    <a class="brand" href="<%= url_for('/') %>" aria-label="<%= config.title %>">
+      <span class="prompt">~/</span><%= config.title %><span class="cursor" aria-hidden="true">_</span>
+    </a>
+    <button class="nav-toggle" type="button" aria-label="<%= __('menu') %>" aria-expanded="false">☰</button>
+    <nav class="nav" aria-label="Main navigation">
+      <% for (const [label, path] of Object.entries(theme.menu)) { %>
+        <a href="<%= url_for(path) %>"><%= __(label) %></a>
+      <% } %>
+      <button class="icon-button search-open" type="button" aria-label="<%= __('search') %>">⌕</button>
+      <button class="icon-button theme-toggle" type="button" aria-label="<%= __('dark_mode') %>">◐</button>
+      <a class="lang-switch" href="<%= language_url(page) %>"><%= __('language') %></a>
+    </nav>
+  </div>
+</header>

@@ -1,0 +1,11 @@
+<section class="authors-page">
+  <header class="section-heading"><h1><%= page.title %></h1><span><%= page.authors.length %></span></header>
+  <% page.authors.forEach(author => { %>
+    <article class="post-card author-card">
+      <div class="author-row"><img src="<%= url_for(author.avatar) %>" alt=""><div><strong><%= author.name %></strong><small><%= ui_lang() === 'en' ? author.bio_en : author.bio_zh %></small></div></div>
+      <p><%= author.posts.length %> <%= __('articles') %></p>
+      <div class="tags"><% author.posts.slice(0, 5).forEach(post => { %><a href="<%= url_for(post.path) %>"><%= post.title %></a><% }) %></div>
+    </article>
+  <% }) %>
+</section>
+

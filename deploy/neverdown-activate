@@ -1,0 +1,17 @@
+#!/bin/sh
+set -eu
+
+release="${1:?release name is required}"
+root=/var/www/neverdown
+target="$root/releases/$release"
+
+test -f "$target/index.html"
+ln -sfn "$target" "$root/current.next"
+mv -Tf "$root/current.next" "$root/current"
+
+# Keep the newest five releases. A failed build never reaches this script.
+find "$root/releases" -mindepth 1 -maxdepth 1 -type d -printf '%T@ %p\n' \
+  | sort -rn \
+  | awk 'NR > 5 {sub(/^[^ ]+ /, ""); print}' \
+  | xargs -r rm -rf
+

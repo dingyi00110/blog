@@ -1,0 +1,31 @@
+{
+  "name": "neverdown-blog",
+  "version": "1.0.0",
+  "private": true,
+  "description": "永不宕机 — a bilingual multi-author Hexo blog",
+  "scripts": {
+    "clean": "hexo clean",
+    "build": "hexo clean && hexo generate",
+    "dev": "hexo server",
+    "check": "hexo clean && hexo generate"
+  },
+  "dependencies": {
+    "hexo": "^7.3.0",
+    "hexo-generator-archive": "^2.0.0",
+    "hexo-generator-category": "^2.0.0",
+    "hexo-generator-feed": "^3.0.0",
+    "hexo-generator-index": "^4.0.0",
+    "hexo-generator-searchdb": "^1.5.0",
+    "hexo-generator-sitemap": "^3.0.1",
+    "hexo-generator-tag": "^2.0.0",
+    "hexo-renderer-ejs": "^2.0.0",
+    "hexo-renderer-marked": "^7.0.1",
+    "hexo-server": "^3.0.0"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "hexo": {
+    "version": "7.3.0"
+  }
+}

@@ -1,0 +1,21 @@
+<footer class="site-footer">
+  <div class="shell footer-inner">
+    <span>© <%= theme.footer.since %>–<%= new Date().getFullYear() %> <%= config.title %></span>
+    <span><%= __('powered') %> · <a href="<%= url_for('/atom.xml') %>">RSS</a></span>
+  </div>
+</footer>
+<div class="search-modal" role="dialog" aria-modal="true" aria-label="<%= __('search') %>" hidden>
+  <div class="search-panel">
+    <button class="search-close" type="button" aria-label="Close">×</button>
+    <label class="search-label" for="site-search"><span class="prompt">$</span> <%= __('search') %></label>
+    <input id="site-search" type="search" placeholder="<%= __('search_placeholder') %>" autocomplete="off">
+    <div class="search-results" aria-live="polite"></div>
+  </div>
+</div>
+<script src="<%= url_for('/js/main.js') %>" defer></script>
+<% if (theme.analytics.umami_url && theme.analytics.website_id) { %>
+  <script defer src="<%= theme.analytics.umami_url %>/script.js" data-website-id="<%= theme.analytics.website_id %>"></script>
+<% } %>
+</body>
+</html>
+

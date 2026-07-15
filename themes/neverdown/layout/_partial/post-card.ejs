@@ -1,0 +1,17 @@
+<% const author = author_info(post.author); %>
+<article class="post-card">
+  <div class="post-meta">
+    <time datetime="<%= date_xml(post.date) %>"><%= date(post.date, 'YYYY-MM-DD') %></time>
+    <span>·</span><span><%= author.name %></span>
+    <% if (post.lang) { %><span class="lang-badge"><%= post.lang === 'en' ? 'EN' : '中文' %></span><% } %>
+  </div>
+  <h2><a href="<%= url_for(post.path) %>"><%= post.title %></a></h2>
+  <p><%= post.description || strip_html(post.excerpt || post.content).slice(0, 180) %></p>
+  <div class="card-footer">
+    <div class="tags">
+      <% post.tags.each(tag => { %><a href="<%= url_for(tag.path) %>">#<%= tag.name %></a><% }) %>
+    </div>
+    <a class="read-more" href="<%= url_for(post.path) %>"><%= __('read_more') %> →</a>
+  </div>
+</article>
+

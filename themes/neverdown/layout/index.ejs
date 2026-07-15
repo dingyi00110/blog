@@ -1,0 +1,13 @@
+<% const lang = ui_lang(); %>
+<section class="hero">
+  <p class="eyebrow"><span class="status-dot"></span> SYSTEM ONLINE</p>
+  <h1><%= config.title %></h1>
+  <p><%= lang === 'en' ? config.subtitle : config.description %></p>
+</section>
+<section class="post-list">
+  <div class="section-heading"><h2><%= __('all_posts') %></h2><span><%= page.total || page.posts.length %> <%= __('articles') %></span></div>
+  <% page.posts.each(post => { %><%- partial('_partial/post-card', { post }) %><% }) %>
+  <% if (!page.posts.length) { %><p class="empty"><%= __('empty') %></p><% } %>
+</section>
+<% if (page.total > 1) { %><nav class="pagination"><%- paginator({prev_text: '←', next_text: '→'}) %></nav><% } %>
+
