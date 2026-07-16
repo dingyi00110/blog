@@ -1,0 +1,24 @@
+[Unit]
+Description=NeverDown independent account CMS
+After=network-online.target mysql.service
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=neverdown
+Group=neverdown
+WorkingDirectory=/usr/local/dlq/blog
+EnvironmentFile=/etc/neverdown/cms.env
+ExecStart=/usr/bin/node /usr/local/dlq/blog/cms/server.js
+Restart=on-failure
+RestartSec=3
+UMask=0027
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=full
+ProtectHome=true
+ReadWritePaths=/usr/local/dlq/blog /var/www/neverdown
+
+[Install]
+WantedBy=multi-user.target
+

@@ -1,7 +1,7 @@
 'use strict';
 
 hexo.extend.generator.register('authors', function (locals) {
-  const authors = this.theme.config.authors || {};
+  const authors = { ...(this.theme.config.authors || {}), ...((locals.data && locals.data.authors) || {}) };
   return {
     path: 'authors/index.html',
     layout: ['authors', 'page'],
@@ -15,4 +15,3 @@ hexo.extend.generator.register('authors', function (locals) {
     }
   };
 });
-

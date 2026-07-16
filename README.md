@@ -1,6 +1,6 @@
 # 永不宕机 / NeverDown
 
-一个基于 Hexo 的极简双语、多作者博客。文章由网页 CMS 写入 GitHub，经 GitHub Actions 构建后原子化部署到阿里云服务器。
+一个基于 Hexo 的极简双语、多作者博客。独立账号 CMS 使用 MySQL 保存账号与内容，发布时生成 Markdown 并原子化部署到阿里云服务器。
 
 ## 本地开发
 
@@ -31,9 +31,11 @@ npm run build
 1. 修改 `_config.yml` 中的正式 `url`。
 2. 修改 `themes/neverdown/_config.yml` 的仓库、作者、Giscus 和 Umami 配置。
 3. 修改 `source/admin/config.yml` 的仓库、域名及 OAuth 网关。
-4. 按 [CMS 配置](docs/CMS.md)启用十位作者的网页登录。
+4. 按 [独立账号 CMS（MySQL）部署手册](docs/INDEPENDENT_CMS_MYSQL.md)启用十位作者的网页登录。
 5. 按 [部署说明](docs/DEPLOYMENT.md)配置阿里云及 GitHub Secrets。
 6. 域名备案完成后配置 DNS，并使用 Certbot 开启 HTTPS。
+
+完整的当前环境部署与排障流程见 [CMS 与阿里云部署操作手册](docs/CMS_ALIYUN_RUNBOOK.md)。
 
 ## 当前能力
 
@@ -41,7 +43,7 @@ npm run build
 - 深色、浅色、跟随系统
 - 中文和英文文章及互译链接
 - 多作者页面和文章署名
-- 网页 Markdown CMS
+- MySQL 独立账号 Markdown CMS
 - 本地全文搜索、RSS、Sitemap
 - Giscus 评论预留
 - Umami 自托管统计预留

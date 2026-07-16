@@ -10,7 +10,7 @@ hexo.extend.helper.register('ui_lang', function () {
 });
 
 hexo.extend.helper.register('author_info', function (id) {
-  const authors = this.theme.authors || {};
+  const authors = { ...(this.theme.authors || {}), ...((this.site.data && this.site.data.authors) || {}) };
   return authors[id] || { name: id || 'Unknown', avatar: '/images/avatar-default.svg' };
 });
 

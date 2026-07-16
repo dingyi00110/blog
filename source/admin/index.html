@@ -5,9 +5,82 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="robots" content="noindex,nofollow">
   <title>永不宕机 · 内容管理</title>
+  <link rel="stylesheet" href="/admin/admin.css">
 </head>
 <body>
-  <script src="https://unpkg.com/@sveltia/cms/dist/sveltia-cms.js"></script>
+  <main id="login-view" class="login-shell">
+    <form id="login-form" class="login-card">
+      <p class="eyebrow"><span></span> PRIVATE CONSOLE</p>
+      <h1><i>~/</i>永不宕机<span>_</span></h1>
+      <p>使用分配给你的作者账号登录。</p>
+      <label>用户名<input name="username" autocomplete="username" required></label>
+      <label>密码<input name="password" type="password" autocomplete="current-password" required></label>
+      <button type="submit">登录控制台 →</button>
+      <output class="form-message" aria-live="polite"></output>
+    </form>
+  </main>
+
+  <div id="app-view" class="app-shell" hidden>
+    <header class="app-header">
+      <a class="brand" href="/" target="_blank"><i>~/</i>永不宕机<span>_</span></a>
+      <div><span id="current-user"></span><button id="logout-button" class="text-button">退出</button></div>
+    </header>
+    <aside class="sidebar">
+      <button id="new-post-button" class="primary-button">＋ 新建文章</button>
+      <nav><button class="nav-button active" data-view="posts">文章</button><button class="nav-button admin-only" data-view="users">作者</button></nav>
+      <div id="post-list" class="post-list"></div>
+    </aside>
+    <section id="editor-view" class="workspace">
+      <div class="workspace-empty"><strong>选择文章或新建内容</strong><span>所有草稿会保存在 MySQL，发布后自动生成 Hexo 页面。</span></div>
+    </section>
+    <section id="users-view" class="workspace" hidden>
+      <div class="panel-heading"><div><p class="eyebrow">ACCESS CONTROL</p><h2>作者管理</h2></div><button id="new-user-button" class="primary-button">＋ 添加作者</button></div>
+      <div id="user-list" class="user-grid"></div>
+    </section>
+  </div>
+
+  <dialog id="user-dialog">
+    <form id="user-form" method="dialog" class="dialog-form">
+      <div class="panel-heading"><h2>添加作者</h2><button value="cancel" class="text-button">关闭</button></div>
+      <label>用户名<input name="username" pattern="[A-Za-z0-9_-]{3,64}" required><small>用于登录和文章 author 字段，仅限英文、数字、下划线和短横线。</small></label>
+      <label>显示名称<input name="display_name" required></label>
+      <label>初始密码<input name="password" type="password" minlength="12" required><small>至少 12 个字符。</small></label>
+      <label>角色<select name="role"><option value="author">作者</option><option value="admin">管理员</option></select></label>
+      <label>中文简介<textarea name="bio_zh" rows="2"></textarea></label>
+      <label>英文简介<textarea name="bio_en" rows="2"></textarea></label>
+      <button type="submit" class="primary-button">创建账号</button>
+      <output class="form-message" aria-live="polite"></output>
+    </form>
+  </dialog>
+
+  <template id="editor-template">
+    <form id="post-form" class="editor-form">
+      <div class="editor-toolbar">
+        <div><p class="eyebrow">CONTENT EDITOR</p><span id="save-state">未保存</span></div>
+        <div><button type="button" id="delete-button" class="danger-button">删除</button><button type="submit" class="secondary-button">保存草稿</button><button type="button" id="publish-button" class="primary-button">发布</button></div>
+      </div>
+      <div class="editor-grid">
+        <div class="fields">
+          <label class="wide">标题<input name="title" required></label>
+          <label>英文别名<input name="slug" pattern="[a-z0-9-]+" placeholder="my-first-post" required></label>
+          <label>语言<select name="lang"><option value="zh">中文</option><option value="en">English</option></select></label>
+          <label class="admin-field">作者<select name="author_id"></select></label>
+          <label>翻译关联标识<input name="translation_key" placeholder="same-key-for-both-languages"></label>
+          <label class="wide">摘要<textarea name="description" rows="3"></textarea></label>
+          <label>分类<input name="categories" placeholder="技术, 随笔"></label>
+          <label>标签<input name="tags" placeholder="Hexo, JavaScript"></label>
+          <label class="wide">封面地址<input name="cover" placeholder="/images/uploads/cover.webp"></label>
+          <label class="checkbox"><input name="comments" type="checkbox" checked> 开启评论</label>
+        </div>
+        <div class="writing-area">
+          <div class="writing-tabs"><button type="button" class="tab active" data-tab="write">Markdown</button><button type="button" class="tab" data-tab="preview">预览</button><label class="upload-button">上传图片<input id="image-upload" type="file" accept="image/png,image/jpeg,image/webp,image/gif" hidden></label></div>
+          <textarea name="body" class="body-editor" spellcheck="true" placeholder="从这里开始写作…"></textarea>
+          <article id="preview-panel" class="preview-panel" hidden></article>
+        </div>
+      </div>
+    </form>
+  </template>
+
+  <script src="/admin/app.js" defer></script>
 </body>
 </html>
-
