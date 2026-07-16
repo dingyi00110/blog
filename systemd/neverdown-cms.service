@@ -9,6 +9,8 @@ User=neverdown
 Group=neverdown
 WorkingDirectory=/usr/local/dlq/blog
 EnvironmentFile=/etc/neverdown/cms.env
+Environment=HOME=/var/lib/neverdown
+Environment=npm_config_cache=/var/cache/neverdown/npm
 ExecStart=/usr/bin/node /usr/local/dlq/blog/cms/server.js
 Restart=on-failure
 RestartSec=3
@@ -17,8 +19,9 @@ NoNewPrivileges=true
 PrivateTmp=true
 ProtectSystem=full
 ProtectHome=true
-ReadWritePaths=/usr/local/dlq/blog /var/www/neverdown
+StateDirectory=neverdown
+CacheDirectory=neverdown
+ReadWritePaths=/usr/local/dlq/blog /var/www/neverdown /var/lib/neverdown /var/cache/neverdown
 
 [Install]
 WantedBy=multi-user.target
-

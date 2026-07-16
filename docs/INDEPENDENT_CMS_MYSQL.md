@@ -61,12 +61,19 @@ npm run build
 ```bash
 sudo useradd \
   --system \
-  --home /nonexistent \
+  --create-home \
+  --home-dir /var/lib/neverdown \
   --shell /usr/sbin/nologin \
   neverdown
 ```
 
-若提示用户已存在，可以忽略。
+若提示用户已存在，修正已有用户的 home 并创建 npm 缓存目录：
+
+```bash
+sudo usermod --home /var/lib/neverdown neverdown
+sudo mkdir -p /var/lib/neverdown/.npm /var/cache/neverdown/npm
+sudo chown -R neverdown:neverdown /var/lib/neverdown /var/cache/neverdown
+```
 
 准备目录和权限：
 
@@ -74,7 +81,9 @@ sudo useradd \
 sudo mkdir -p /etc/neverdown /var/www/neverdown/releases
 sudo chown -R neverdown:neverdown \
   /usr/local/dlq/blog \
-  /var/www/neverdown
+  /var/www/neverdown \
+  /var/lib/neverdown \
+  /var/cache/neverdown
 sudo install -m 755 deploy/neverdown-activate /usr/local/bin/neverdown-activate
 ```
 
