@@ -37,6 +37,8 @@ npm run build
 
 完整的当前环境部署与排障流程见 [CMS 与阿里云部署操作手册](docs/CMS_ALIYUN_RUNBOOK.md)。
 
+无域名公网后台的证书配置见 [公网 IP HTTPS 与 CMS 开放](docs/IP_HTTPS.md)。
+
 ## 当前能力
 
 - 响应式开发者风格主题

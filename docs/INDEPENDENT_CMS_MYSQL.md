@@ -4,19 +4,19 @@
 
 ## 1. 安全边界
 
-当前博客没有域名和 HTTPS，因此 CMS API 只允许 Nginx 本机请求。管理员和作者必须通过 SSH 隧道访问：
+当前使用 Let’s Encrypt 短期 IP 地址证书提供公网 HTTPS，作者直接访问：
 
 ```text
-开发者电脑 http://localhost:8080/admin/
-        ↓ SSH 隧道
-阿里云 Nginx 127.0.0.1:80
+作者 https://39.102.210.194/admin/
+        ↓ TLS
+阿里云 Nginx 443
         ↓
 CMS API 127.0.0.1:3001
         ↓
 MySQL 127.0.0.1:3306
 ```
 
-不要让作者直接在公网访问 `http://39.102.210.194/admin/`，否则密码会通过明文 HTTP 传输。正式多人使用前应完成域名备案和 HTTPS。
+证书申请和自动续期见 [公网 IP HTTPS 与 CMS 开放](IP_HTTPS.md)。禁止通过普通 HTTP 登录后台。
 
 ## 2. MySQL 数据库
 
@@ -106,7 +106,7 @@ sudo nano /etc/neverdown/cms.env
 ```ini
 CMS_HOST=127.0.0.1
 CMS_PORT=3001
-CMS_SITE_ORIGIN=http://localhost:8080
+CMS_SITE_ORIGIN=https://39.102.210.194
 CMS_REPO_DIR=/usr/local/dlq/blog
 CMS_RELEASE_ROOT=/var/www/neverdown
 CMS_SESSION_HOURS=24
@@ -193,6 +193,12 @@ sudo nginx -t
 sudo systemctl reload nginx
 ```
 
+Nginx 的 `server_name` 必须同时包含公网 IP 和 `localhost`，否则 SSH 隧道带来的 `Host: localhost` 请求会落到默认站点并返回 404：
+
+```nginx
+server_name 39.102.210.194 localhost 127.0.0.1;
+```
+
 服务器内部测试：
 
 ```bash
@@ -213,29 +219,12 @@ sudo -u neverdown cp -a public/. "/var/www/neverdown/releases/$RELEASE/"
 sudo -u neverdown /usr/local/bin/neverdown-activate "$RELEASE"
 ```
 
-## 10. 建立 SSH 隧道并登录
+## 10. 登录 CMS
 
-在作者电脑运行：
-
-```bash
-ssh \
-  -o ExitOnForwardFailure=yes \
-  -N \
-  -L 8080:127.0.0.1:80 \
-  SSH_USER@39.102.210.194
-```
-
-保持终端开启，在另一个终端测试：
-
-```bash
-curl http://localhost:8080/cms-api/health
-curl -I http://localhost:8080/admin/
-```
-
-浏览器访问：
+完成公网 IP HTTPS 配置后，浏览器访问：
 
 ```text
-http://localhost:8080/admin/
+https://39.102.210.194/admin/
 ```
 
 使用第 6 步创建的用户名和密码登录。
@@ -334,7 +323,7 @@ mysqldump -h 127.0.0.1 -u neverdown_cms -p \
 2. 删除 Nginx `/cms-api/` 中仅允许 `127.0.0.1` 的限制，或改为额外的访问控制。
 3. 使用 Certbot 配置 HTTPS。
 4. 重启 CMS。
-5. 作者直接访问 `https://正式域名/admin/`，不再需要 SSH 隧道。
+5. 作者改为访问 `https://正式域名/admin/`。
 
 即使启用 HTTPS，也建议为后台增加限速、登录告警和定期密码轮换。
 
