@@ -1,16 +1,16 @@
-# 当前使用指向阿里云 IP 的临时 sslip.io 域名，以满足 CMS 的 HTTPS 要求。
+# 临时联调模式：从开发者电脑通过 SSH 隧道访问 http://localhost:8080/admin/。
 backend:
   name: github
   repo: dingyi00110/blog
   branch: main
-  base_url: https://39-102-210-194.sslip.io
+  base_url: http://localhost:8080
   auth_endpoint: oauth/auth
 
 publish_mode: simple
 media_folder: source/images/uploads
 public_folder: /images/uploads
-site_url: https://39-102-210-194.sslip.io
-display_url: https://39-102-210-194.sslip.io
+site_url: http://localhost:8080
+display_url: http://localhost:8080
 logo_url: /images/favicon.svg
 locale: zh_Hans
 

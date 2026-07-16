@@ -12,6 +12,7 @@ const siteUrl = String(process.env.SITE_URL || '').replace(/\/$/, '');
 const callbackUrl = process.env.CALLBACK_URL;
 const oauthScope = process.env.GITHUB_SCOPE || 'repo';
 const stateSecret = process.env.STATE_SECRET;
+const secureCookie = siteUrl.startsWith('https://') ? '; Secure' : '';
 
 for (const [name, value] of Object.entries({
   GITHUB_CLIENT_ID: clientId,
@@ -88,7 +89,7 @@ const server = http.createServer(async (req, res) => {
     }).toString();
     return send(res, 302, '', 'text/plain; charset=utf-8', {
       Location: authorize.toString(),
-      'Set-Cookie': `oauth_state=${encodeURIComponent(state)}; Path=/; HttpOnly; Secure; SameSite=Lax; Max-Age=600`
+      'Set-Cookie': `oauth_state=${encodeURIComponent(state)}; Path=/; HttpOnly${secureCookie}; SameSite=Lax; Max-Age=600`
     });
   }
 
@@ -110,7 +111,7 @@ const server = http.createServer(async (req, res) => {
       const data = await tokenResponse.json();
       if (!tokenResponse.ok || !data.access_token) throw new Error(data.error_description || data.error || 'Token exchange failed');
       return send(res, 200, callbackPage('success', { token: data.access_token, provider: 'github' }), 'text/html; charset=utf-8', {
-        'Set-Cookie': 'oauth_state=; Path=/; HttpOnly; Secure; SameSite=Lax; Max-Age=0'
+        'Set-Cookie': `oauth_state=; Path=/; HttpOnly${secureCookie}; SameSite=Lax; Max-Age=0`
       });
     } catch (error) {
       return send(res, 502, callbackPage('error', { message: error.message }), 'text/html; charset=utf-8');
