@@ -22,7 +22,14 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
-      - run: npm run build
+      - name: Build site and AI index
+        env:
+          AI_EMBEDDING_PROVIDER: ${{ vars.AI_EMBEDDING_PROVIDER }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          OPENAI_EMBEDDING_MODEL: ${{ vars.OPENAI_EMBEDDING_MODEL }}
+          DASHSCOPE_API_KEY: ${{ secrets.DASHSCOPE_API_KEY }}
+          QWEN_EMBEDDING_MODEL: ${{ vars.QWEN_EMBEDDING_MODEL }}
+        run: npm run build
       - uses: actions/upload-artifact@v4
         with:
           name: neverdown-public
@@ -56,4 +63,3 @@ jobs:
           ssh "$USER@$HOST" "mkdir -p /var/www/neverdown/releases/$RELEASE"
           rsync -az --delete public/ "$USER@$HOST:/var/www/neverdown/releases/$RELEASE/"
           ssh "$USER@$HOST" "/usr/local/bin/neverdown-activate $RELEASE"
-

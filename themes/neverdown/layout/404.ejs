@@ -1,1 +1,1 @@
-<section class="not-found"><p class="error-code">404</p><h1>Process not found</h1><p>The requested resource may have moved or never existed.</p><a href="<%= url_for('/') %>">cd ~/home →</a></section>
+<section class="not-found"><div class="signal-orbit"><span></span><i></i></div><p class="error-code">404</p><span class="kicker">SIGNAL LOST</span><h1><%= __('not_found_title') %></h1><p><%= __('not_found_body') %></p><a class="button primary" href="<%= url_for('/') %>"><%= __('return_home') %> →</a></section>

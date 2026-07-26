@@ -12,6 +12,7 @@ const { marked } = require('marked');
 const sanitizeHtml = require('sanitize-html');
 const YAML = require('yaml');
 const { createPool, hashPassword, verifyPassword, tokenHash } = require('./lib');
+const { createAiRouter } = require('./ai');
 
 const execFileAsync = promisify(execFile);
 const app = express();
@@ -97,6 +98,8 @@ app.use((req, res, next) => {
   }
   next();
 });
+
+app.use('/ai', createAiRouter({ repoDir, parseCookies, cookieOptions }));
 
 async function authenticate(req, res, next) {
   try {

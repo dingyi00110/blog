@@ -1,5 +1,7 @@
 <% const author = author_info(post.author); %>
-<article class="post-card">
+<article class="post-card <%= index === 0 ? 'post-card-featured' : '' %>">
+  <% if (post.cover) { %><a class="post-cover" href="<%= url_for(post.path) %>"><img src="<%= url_for(post.cover) %>" alt="" loading="lazy"></a><% } else { %><a class="post-cover post-cover-generated" href="<%= url_for(post.path) %>" aria-hidden="true"><span><%= String(index + 1).padStart(2, '0') %></span><i></i></a><% } %>
+  <div class="post-card-body">
   <div class="post-meta">
     <time datetime="<%= date_xml(post.date) %>"><%= date(post.date, 'YYYY-MM-DD') %></time>
     <span>·</span><span><%= author.name %></span>
@@ -13,5 +15,5 @@
     </div>
     <a class="read-more" href="<%= url_for(post.path) %>"><%= __('read_more') %> →</a>
   </div>
+  </div>
 </article>
-

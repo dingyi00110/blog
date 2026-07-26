@@ -21,4 +21,41 @@ next: Next
 copy: Copy
 copied: Copied
 menu: Menu
-
+ask_ai: Ask AI
+system_online: System online
+hero_build: Keep building.
+hero_remember: Remember what matters.
+explore_stories: Explore stories
+editorial_signal: Editorial signal
+signal_caption: Code, life, and ideas worth keeping in production
+ask_archive: Ask our living archive
+ai_prompt_example: “How does NeverDown think about continuous creation?”
+latest_issue: Latest issue
+latest_stories: Recent stories
+contents: On this page
+summarize_article: Summarize the core ideas in this article
+ask_this_article: Ask this article
+continue_exploring: Continue through the archive
+browse_archive: Browse every story
+archive_intro: Every field note, experiment, and enduring idea in chronological order.
+authors_intro: Different voices maintaining one resilient archive of ideas.
+not_found_title: This signal went offline
+not_found_body: The page may have moved or never existed. Return to what is still running.
+return_home: Return home
+footer_manifesto: Code, life, and everything between them worth keeping online.
+ai_assistant: AI knowledge assistant
+grounded_in_archive: Grounded only in published articles
+close: Close
+ai_welcome_title: Find an answer in the archive
+ai_welcome_body: I search NeverDown's Chinese and English stories and cite every answer.
+ai_suggestion_one: What technical topics were published recently?
+ai_suggestion_two: How does this site think about creation and life?
+ai_placeholder: Ask about the published archive…
+ai_disclaimer: AI can be wrong. Verify against cited sources.
+send: Send
+stop: Stop
+copy_answer: Copy answer
+retry: Retry
+ai_unavailable: AI is temporarily unavailable. Full-text search still works.
+topics: Topics
+read_translation: Read translation

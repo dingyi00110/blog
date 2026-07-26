@@ -1,17 +1,22 @@
 <% const author = author_info(page.author); const reading = reading_time(page); %>
-<article class="post">
-  <header class="post-header">
-    <div class="post-meta"><time datetime="<%= date_xml(page.date) %>"><%= __('published') %> <%= date(page.date, 'YYYY-MM-DD') %></time><span>·</span><span><%= reading.minutes %> <%= __('minutes') %></span></div>
+<article class="post" data-post-title="<%= page.title %>">
+  <header class="post-header post-hero">
+    <span class="kicker">FIELD NOTE / <%= page.lang === 'en' ? 'EN' : 'ZH' %></span>
+    <div class="post-meta"><time datetime="<%= date_xml(page.date) %>"><%= __('published') %> <%= date(page.date, 'YYYY-MM-DD') %></time><span>·</span><span><%= reading.minutes %> <%= __('minutes') %></span><span>·</span><a href="<%= language_url(page) %>"><%= __('read_translation') %></a></div>
     <h1><%= page.title %></h1>
     <% if (page.description) { %><p class="post-deck"><%= page.description %></p><% } %>
     <div class="author-row"><img src="<%= url_for(author.avatar) %>" alt=""><div><strong><%= author.name %></strong><small><%= ui_lang() === 'en' ? author.bio_en : author.bio_zh %></small></div></div>
   </header>
-  <div class="post-content"><%- page.content %></div>
+  <div class="post-layout">
+    <aside class="post-rail"><nav class="toc" aria-label="<%= __('contents') %>"><strong><%= __('contents') %></strong><div class="toc-links"></div></nav><button class="article-ai ai-open" type="button" data-question="<%= __('summarize_article') %>"><span>✦</span><%= __('ask_this_article') %></button></aside>
+    <div class="post-content"><%- page.content %></div>
+  </div>
   <footer class="post-footer">
     <div class="tags"><% page.tags.each(tag => { %><a href="<%= url_for(tag.path) %>">#<%= tag.name %></a><% }) %></div>
   </footer>
 </article>
+<% const relatedPosts = site.posts.toArray().filter(post => post.path !== page.path && (post.lang || 'zh') === (page.lang || 'zh')).slice(0, 3); %>
+<section class="related"><div><span class="kicker">NEXT / EXPLORE</span><h2><%= __('continue_exploring') %></h2></div><div class="related-links"><% relatedPosts.forEach(post => { %><a href="<%= url_for(post.path) %>"><%= post.title %><span>↗</span></a><% }) %><% if (!relatedPosts.length) { %><a href="<%= url_for('/archives/') %>"><%= __('browse_archive') %><span>→</span></a><% } %></div></section>
 <% if (page.comments !== false && theme.comments.enable && theme.comments.repo_id) { %>
 <section class="comments"><script src="https://giscus.app/client.js" data-repo="<%= theme.comments.repo %>" data-repo-id="<%= theme.comments.repo_id %>" data-category="<%= theme.comments.category %>" data-category-id="<%= theme.comments.category_id %>" data-mapping="<%= theme.comments.mapping %>" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="preferred_color_scheme" data-lang="<%= ui_lang() === 'en' ? 'en' : 'zh-CN' %>" crossorigin="anonymous" async></script></section>
 <% } %>
-

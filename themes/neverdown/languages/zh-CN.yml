@@ -21,4 +21,41 @@ next: 下一篇
 copy: 复制
 copied: 已复制
 menu: 菜单
-
+ask_ai: 问 AI
+system_online: 系统在线
+hero_build: 持续构建，
+hero_remember: 认真记住。
+explore_stories: 开始阅读
+editorial_signal: 编辑信号
+signal_caption: 关于代码、生活，以及值得长期运行的想法
+ask_archive: 向我们的文章档案提问
+ai_prompt_example: “NeverDown 如何理解持续创造？”
+latest_issue: 最新一期
+latest_stories: 新近故事
+contents: 本文目录
+summarize_article: 请总结这篇文章的核心观点
+ask_this_article: 问这篇文章
+continue_exploring: 继续探索档案
+browse_archive: 浏览全部文章
+archive_intro: 按时间整理的所有记录、实验与长期思考。
+authors_intro: 不同的声音，共同维护一个永不宕机的思想档案。
+not_found_title: 这段信号已经离线
+not_found_body: 页面可能已迁移，也可能从未存在。让我们回到仍在运行的地方。
+return_home: 返回首页
+footer_manifesto: 代码、生活，以及两者之间值得长期在线的一切。
+ai_assistant: AI 知识助手
+grounded_in_archive: 只依据站内文章回答
+close: 关闭
+ai_welcome_title: 从档案中寻找答案
+ai_welcome_body: 我会检索 NeverDown 的中英文文章，并为每个回答标注来源。
+ai_suggestion_one: 最近写了哪些技术内容？
+ai_suggestion_two: 这里如何看待创作与生活？
+ai_placeholder: 输入关于站内文章的问题…
+ai_disclaimer: AI 可能出错，请以引用原文为准
+send: 发送
+stop: 停止
+copy_answer: 复制回答
+retry: 重试
+ai_unavailable: AI 暂时不可用，你仍可使用全文搜索。
+topics: 主题
+read_translation: 阅读译文

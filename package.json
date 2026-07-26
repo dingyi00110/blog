@@ -8,7 +8,10 @@
     "build": "hexo clean && hexo generate",
     "dev": "hexo server",
     "check": "hexo clean && hexo generate",
-    "cms:check": "node --check cms/server.js && node --check cms/create-admin.js && node --check source/admin/app.js"
+    "cms:check": "node --check cms/server.js && node --check cms/ai.js && node --check cms/create-admin.js && node --check source/admin/app.js",
+    "nevercull:dev": "npm --prefix apps/nevercull run tauri dev",
+    "nevercull:check": "npm --prefix apps/nevercull run check",
+    "nevercull:build": "npm --prefix apps/nevercull run tauri build"
   },
   "dependencies": {
     "express": "^5.1.0",

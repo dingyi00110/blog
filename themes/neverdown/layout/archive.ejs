@@ -1,7 +1,7 @@
 <section class="archive">
-  <header class="section-heading"><h1><%= page.title || __('archives') %></h1><span><%= page.posts.length %> <%= __('articles') %></span></header>
+  <header class="page-hero"><span class="kicker">INDEX / <%= __('archives') %></span><h1><%= page.title || __('archives') %></h1><p><%= __('archive_intro') %></p></header>
+  <div class="section-heading"><h2><%= __('all_posts') %></h2><span><%= page.posts.length %> <%= __('articles') %></span></div>
   <% let year; page.posts.each(post => { const y = date(post.date, 'YYYY'); if (y !== year) { year = y; %><h2 class="archive-year"><%= year %></h2><% } %>
     <div class="archive-item"><time><%= date(post.date, 'MM-DD') %></time><a href="<%= url_for(post.path) %>"><%= post.title %></a><span><%= author_info(post.author).name %></span></div>
   <% }) %>
 </section>
-

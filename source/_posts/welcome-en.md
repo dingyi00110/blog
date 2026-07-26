@@ -1,5 +1,5 @@
 ---
-title: Welcome to NeverDown
+title: Built to Stay Online
 date: 2026-07-15 23:00:00
 author: admin
 lang: en
@@ -8,11 +8,10 @@ categories:
   - Announcement
 tags:
   - NeverDown
-description: The first post on NeverDown.
+description: Code, life, and the ideas worth keeping in production.
 comments: true
 ---
 
-This is **NeverDown**, a bilingual blog written by a small group of friends.
+**NeverDown** is more than a name. It is a commitment to keep creating.
 
-We write about code, life, and everything worth remembering in between.
-
+We write about code, life, and everything in between that deserves to stay online.

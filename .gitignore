@@ -5,4 +5,8 @@ public/
 db.json
 *.log
 .env
-
+apps/nevercull/dist/
+apps/nevercull/src-tauri/target/
+apps/nevercull/*.tsbuildinfo
+apps/nevercull/vite.config.js
+apps/nevercull/vite.config.d.ts
